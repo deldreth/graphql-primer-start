@@ -1,9 +1,11 @@
 import React, { memo } from 'react';
 
+import { Query } from 'react-apollo';
 import styled from 'react-emotion';
 import { Link } from 'react-router-dom';
 
 import AddLocation from './AddLocation';
+import { LOCATIONS_QUERY } from '../graphql/queries';
 
 function Locations(props) {
   return (

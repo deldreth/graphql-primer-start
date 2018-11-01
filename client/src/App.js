@@ -1,5 +1,7 @@
 import React, { Component, lazy } from 'react';
 
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 import { HashRouter, Route } from 'react-router-dom';
 import styled from 'react-emotion';
 

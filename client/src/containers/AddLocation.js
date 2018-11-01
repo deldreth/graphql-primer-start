@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 import styled from 'react-emotion';
+import { Mutation } from '../graphql/mutations';
+
+import { ADD_LOCATION_MUTATION } from '../graphql/mutations';
 
 export default class AddLocation extends Component {
   constructor(props) {
