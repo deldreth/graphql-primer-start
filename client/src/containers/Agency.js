@@ -1,27 +1,52 @@
 import React, { memo, Fragment } from 'react';
 
+import { Query } from 'react-apollo';
 import styled from 'react-emotion';
 
+import { LOCATION_QUERY } from '../graphql/queries';
 import AddCat from './AddCat';
 
 function Location(props) {
   return (
-    <Container>
-      <h1>Todo: Location name</h1>
+    <Query query={LOCATION_QUERY} variables={{ id: props.match.params.id }}>
+      {({ loading, error, data }) => {
+        if (loading) {
+          return <p>Loading...</p>;
+        }
 
-      <AddCat locationId={props.match.params.id} />
+        if (error) {
+          return <p>Error!</p>;
+        }
 
-      <Fragment>
-        <hr />
-        <h2>Cats at this location</h2>
+        return (
+          <Container>
+            <h1>{data.location.name}</h1>
 
-        <Cats>
-          <Cat>
-            <h5>Todo: Cat name</h5>
-          </Cat>
-        </Cats>
-      </Fragment>
-    </Container>
+            <AddCat locationId={props.match.params.id} />
+
+            {data.location.cats &&
+              data.location.cats.length > 0 && (
+                <Fragment>
+                  <hr />
+                  <h2>Cats at this location</h2>
+
+                  <Cats>
+                    {data.location.cats.map((cat, index) => {
+                      return (
+                        <Cat key={index}>
+                          <h5>{cat.name}</h5>
+
+                          <p>{cat.breed}</p>
+                        </Cat>
+                      );
+                    })}
+                  </Cats>
+                </Fragment>
+              )}
+          </Container>
+        );
+      }}
+    </Query>
   );
 }
 
