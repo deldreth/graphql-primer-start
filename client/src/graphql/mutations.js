@@ -10,4 +10,11 @@ export const ADD_CAT_MUTATION = gql`
   }
 `;
 
-export const ADD_LOCATION_MUTATION = gql``;
+export const ADD_LOCATION_MUTATION = gql`
+  mutation addLocation($input: LocationInput) {
+    addLocation(input: $input) {
+      id
+      name
+    }
+  }
+`;

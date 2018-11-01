@@ -13,4 +13,11 @@ export const LOCATION_QUERY = gql`
   }
 `;
 
-export const LOCATIONS_QUERY = gql``;
+export const LOCATIONS_QUERY = gql`
+  {
+    locations {
+      id
+      name
+    }
+  }
+`;
