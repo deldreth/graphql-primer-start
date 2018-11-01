@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 import styled from 'react-emotion';
-import { Mutation } from '../graphql/mutations';
+import { Mutation } from 'react-apollo';
 
 import { ADD_LOCATION_MUTATION } from '../graphql/mutations';
+import { LOCATIONS_QUERY } from '../graphql/queries';
 
 export default class AddLocation extends Component {
   constructor(props) {
